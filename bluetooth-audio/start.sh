@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -z "$BLUETOOTH_DEVICE_NAME" ]]; then
+if [[ -z "$DEVICE_NAME" ]]; then
   BLUETOOTH_DEVICE_NAME=$(printf "balenaSound %s" $(hostname | cut -c -4))
 fi
 
@@ -34,7 +34,7 @@ rm -rf /var/run/bluealsa/
 /usr/bin/bluealsa -i hci0 -p a2dp-sink &
 
 hciconfig hci0 up
-hciconfig hci0 name "$BLUETOOTH_DEVICE_NAME"
+hciconfig hci0 name "$DEVICE_NAME"
 
 if ! [ -z "$BLUETOOTH_PIN_CODE" ] && [[ $BLUETOOTH_PIN_CODE -gt 1 ]] && [[ $BLUETOOTH_PIN_CODE -lt 1000000 ]]; then
   hciconfig hci0 sspmode 0  # Legacy pairing (PIN CODE)
@@ -53,5 +53,5 @@ if [ -f "/var/cache/bluetooth/reconnect_device" ]; then
 fi
 
 sleep 2
-printf "Device is discoverable as \"%s\"\n" "$BLUETOOTH_DEVICE_NAME"
+printf "Device is discoverable as \"%s\"\n" "$DEVICE_NAME"
 exec /usr/bin/bluealsa-aplay --pcm-buffer-time=1000000 00:00:00:00:00:00
