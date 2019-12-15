@@ -5,7 +5,7 @@ RUN apk add --update \
 --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
 shairport-sync
 
-COPY asound.conf /etc/
+#COPY asound.conf /etc/
 
 COPY start.sh /usr/src/
 

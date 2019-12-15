@@ -26,7 +26,7 @@ COPY udev-rules/ /etc/udev/rules.d/
 COPY bluetooth-agent /usr/src/
 RUN chmod +x /usr/src/bluetooth-agent
 
-COPY asound.conf /etc/
+#COPY asound.conf /etc/
 
 COPY start.sh /usr/src/
 RUN chmod +x /usr/src/start.sh
