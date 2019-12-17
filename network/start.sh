@@ -17,17 +17,17 @@ sleep 15
 # nmcli -t g | grep full
 
 # 3. Is there Internet connectivity via a google ping?
-# wget --spider http://google.com 2>&1
+wget --spider http://google.com 2>&1
 
 # 4. Is there an active WiFi connection?
-iwgetid -r
-
-if [ $? -eq 0 ]; then
-    printf 'Skipping WiFi Connect\n'
-else
-    printf 'Starting WiFi Connect\n'
-    ./wifi-connect
-fi
-
+#iwgetid -r
+#
+#if [ $? -eq 0 ]; then
+#    printf 'Skipping WiFi Connect\n'
+#else
+#    printf 'Starting WiFi Connect\n'
+#    ./wifi-connect
+#fi
+#
 # Start your application here.
 sleep infinity
